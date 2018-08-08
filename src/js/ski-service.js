@@ -1,4 +1,6 @@
 export class SkiService {
+
+  
   getWeatherInfoByCity(city) {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
