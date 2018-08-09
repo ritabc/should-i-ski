@@ -20,14 +20,15 @@ $(document).ready(function() {
       $('#output').text(`${body.data.nearest_area[0].areaName[0].value}`)
       $('#temperature').text(`${body.data.weather[0].bottom[0].maxtempC}c`)
       $('#chanceOfSnow').text(`${body.data.weather[0].chanceofsnow}%`)
+
+      let calc = new Algorithm()
+      if (calc.shouldWeSki(body) == true){
+        console.log(city);
+        $('#shouldWeSki').text("GET YOUR BOOTS ON!")
+      } else {
+          $('#shouldWeSki').text("Nope, TIME TO DRINK!")
+      }
+
     })
-
-    let calc = new Algorithm()
-    if (calc.shouldWeSki(city) == true){
-      $('#shouldWeSki').text("GET YOUR BOOTS ON!")
-    } else {
-        $('#shouldWeSki').text("Nope, TIME TO DRINK!")
-    }
-
   })
 });
