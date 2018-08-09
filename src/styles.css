@@ -1,3 +1,26 @@
 body {
-  background-color: #fffff0;
+  background-color: lightblue;
+}
+
+.card-deck {
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+}
+
+.header img{
+  overflow: hidden;
+  background-color: #f1f1f1;
+  width: 100%;
+  max-width: 1300px;
+}
+
+#title {
+  display: flex;
+  justify-content: center;
+  max-height: 10%;
+}
+
+@media only screen and (min-width: 1200px) {
+  .header img{ display:block;margin:0 auto;}
 }
