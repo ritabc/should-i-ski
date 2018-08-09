@@ -27,20 +27,28 @@ $(document).ready(function() {
           $('#shouldWeSki').text("Nope, TIME TO DRINK!")
       }
 
-      let dayOneLow = body.data.weather[0].mid[0].mintempC
-      let dayOneHigh = body.data.weather[0].mid[0].maxtempC
-      $('#day-one-temps').text(`${dayOneLow}C/${dayOneHigh}C`)
+      for(let i = 0; i < 6; i++) {
+        let dayOneLow = body.data.weather[i].mid[0].mintempC
+        let dayOneHigh = body.data.weather[i].mid[0].maxtempC
+        let windspeed = body.data.weather[i].hourly[0].mid[0].windspeedKmph
+        let iconAM = body.data.weather[i].hourly[2].bottom["0"].weatherIconUrl["0"].value
+        let iconPM = body.data.weather[i].hourly[7].bottom["0"].weatherIconUrl["0"].value
+        let dayHtml =
+          `<div class='day-one card'>
+            <div class="card-title">Expected Snowfall</div>
+            <div>
+              <h4>${dayOneLow}C/${dayOneHigh}C</h4>
+              <h4>${windspeed}kmph</h4>
+            </div>
+            <div>
+              <img src=${iconAM} alt="amPic">
+              <img src=${iconPM} alt="pmPic">
+            </div>
+          </div>`
+        console.log(dayHtml);
+        $('.card-deck').append(dayHtml);
 
-      let windspeed = body.data.weather[0].hourly[0].mid[0].windspeedKmph
-      $('#day-one-days').text(`${windspeed}kmph`);
-
-      let iconAM = body.data.weather["0"].hourly[2].bottom["0"].weatherIconUrl["0"].value
-      $('#day-one-pic').html(`<img src=${iconAM} alt="amPic">`)
-
-      let iconPM = body.data.weather["0"].hourly[7].bottom["0"].weatherIconUrl["0"].value
-      $('#night-one-pic').html(`<img src=${iconPM} alt="pmPic">`)
-
-
+      }
     })
   })
 });
