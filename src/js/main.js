@@ -47,7 +47,6 @@ $(document).ready(function() {
               <img src=${iconPM} alt="pmPic">
             </div>
           </div>`
-        console.log(dayHtml);
         $('.card-deck').append(dayHtml);
 
       }
